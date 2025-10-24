@@ -38,7 +38,7 @@ Users type any situation (e.g., “missed a deadline”) and get a funny, sarcas
 
 ## How to Run
 
-### **Start Docker**
+**Start Docker**
 Make sure Docker is running, then from the project root:
 
 ```bash
@@ -50,3 +50,104 @@ docker compose up -d --build
 - Backend available at: http://localhost:3000
 - Simply open the file: frontend/index.html
 
+## Excuse Machine — Commands Reference
+### Create Virtual Environment (first time only)**
+**PowerShell**
+```powershell
+python -m venv backend/.venv
+```
+**Git Bash**
+```Git Bash
+python -m venv backend/.venv
+```
+**Activate Virtual Environment (every new session)**
+```powershell
+.\backend\.venv\Scripts\Activate.ps1
+```
+**Git Bash**
+```Git Bash
+source backend/.venv/Scripts/activate
+```
+**Install Python Dependencies**
+```Git Bash
+pip install -r backend/requirements.txt
+```
+Test Environment
+```Git Bash
+python -c "import fastapi, httpx, uvicorn; print('ok')"
+```
+### Docker Commands (Model + Backend)
+**Start All Containers**
+```Git Bash
+docker compose up -d --build
+```
+**Stop and Remove Containers**
+```Git Bash
+docker compose down
+```
+**Restart Containers**
+```Git Bash
+docker compose restart
+```
+**View Running Containers**
+```Git Bash
+docker ps
+```
+**View Logs**
+```Git Bash
+docker compose logs -f
+```
+**Specific container:**
+```Git Bash
+docker logs -f excuse-backend
+docker logs -f ollama-appECM
+```
+### Pull or Switch Models
+**Default model:**
+```Git Bash
+docker exec -it ollama-appECM ollama pull phi3:mini
+```
+**Alternative example:**
+```Git Bash
+docker exec -it ollama-appECM ollama pull gemma:2b
+```
+**List Installed Models**
+```Git Bash
+docker exec -it ollama-appECM ollama list
+```
+**Test Model Directly**
+```Git Bash
+docker exec -it ollama-appECM ollama run phi3:mini "Write a funny excuse for being late."
+```
+### Backend (FastAPI)
+**Run Locally (without Docker)**
+```Git Bash
+cd backend
+uvicorn app:app --host 0.0.0.0 --port 3000 --reload
+```
+- Then open http://localhost:3000
+**Expected output:**
+```Git Bash
+{"status":"ok","message":"Excuse Machine API running."}
+```
+### Maintenance & Debug
+**Health Check**
+```Git Bash
+curl http://localhost:3000
+```
+**Clean Cache**
+```Git Bash
+find . -type d -name "__pycache__" -exec rm -rf {} +
+```
+### Makefile Shortcuts
+| Action           | Command            |
+| ---------------- | ------------------ |
+| Start containers | `make up`          |
+| Stop containers  | `make down`        |
+| Restart          | `make restart`     |
+| Logs             | `make logs`        |
+| Pull model       | `make pull-model`  |
+| List models      | `make models`      |
+| Create venv      | `make venv`        |
+| Install deps     | `make install`     |
+| Test venv        | `make test-import` |
