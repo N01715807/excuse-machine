@@ -50,8 +50,10 @@ docker compose up -d --build
 - Backend available at: http://localhost:3000
 - Simply open the file: frontend/index.html
 
+---
+
 ## Excuse Machine — Commands Reference
-### Create Virtual Environment (first time only)**
+### Create Virtual Environment (first time only)
 **PowerShell**
 ```powershell
 python -m venv backend/.venv
@@ -61,6 +63,7 @@ python -m venv backend/.venv
 python -m venv backend/.venv
 ```
 **Activate Virtual Environment (every new session)**
+**PowerShell**
 ```powershell
 .\backend\.venv\Scripts\Activate.ps1
 ```
