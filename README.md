@@ -61,6 +61,7 @@ python -m venv backend/.venv
 python -m venv backend/.venv
 ```
 **Activate Virtual Environment (every new session)**
+**PowerShell**
 ```powershell
 .\backend\.venv\Scripts\Activate.ps1
 ```
