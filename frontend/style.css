@@ -1,0 +1,217 @@
+/* === Tech / Mecha Theme (Accessible) === */
+:root {
+  --bg: #0b0f14;
+  --panel: #0f1620;
+  --panel-2: #101822;
+  --text: #e6f1ff;
+  --muted: #9fb3c8;
+
+  --primary: #00e0ff;          /* cyan neon */
+  --primary-weak: #00a9c0;
+  --accent: #7cff6b;           /* lime accent */
+  --danger: #ff5566;
+
+  --border: #1f2b38;
+  --border-strong: #2b3c4d;
+
+  --glow: 0 0 12px rgba(0, 224, 255, 0.45);
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 800px at 10% -20%, #102231 0%, transparent 60%),
+    radial-gradient(1000px 700px at 110% 120%, #152b3c 0%, transparent 60%),
+    linear-gradient(180deg, #0b0f14 0%, #0b0f14 100%);
+  font-family: ui-monospace, SFMono-Regular, Menlo, "JetBrains Mono",
+               "Cascadia Code", Consolas, "Liberation Mono", monospace;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  line-height: 1.55;
+  padding: 32px 20px;
+}
+
+/* Subtle grid overlay for “mecha” vibe */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0.9), transparent 75%);
+}
+
+/* Card / panel */
+.container {
+  width: 100%;
+  max-width: 560px;
+  background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  box-shadow:
+    0 12px 24px rgba(0,0,0,0.45),
+    inset 0 0 0 1px rgba(255,255,255,0.02);
+  padding: 22px 22px 18px;
+  position: relative;
+}
+
+.container::after {
+  /* top cyan indicator bar */
+  content: "";
+  position: absolute;
+  top: 0; left: 14px; right: 14px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  filter: drop-shadow(var(--glow));
+}
+
+h1 {
+  margin: 0 0 6px 0;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  font-size: 1.15rem;
+  color: var(--text);
+}
+
+p {
+  margin: 0 0 16px 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+form fieldset {
+  margin: 14px 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(10, 16, 22, 0.6);
+}
+
+legend {
+  padding: 0 6px;
+  color: var(--primary);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  filter: drop-shadow(var(--glow));
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin: 6px 0 6px;
+  color: #d8e7ff;
+}
+
+textarea, select {
+  width: 100%;
+  color: var(--text);
+  background: #0b1219;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  padding: 12px 12px;
+  font-size: 0.98rem;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+
+select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+    linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position:
+    calc(100% - 16px) calc(1.1em),
+    calc(100% - 11px) calc(1.1em);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 32px;
+}
+
+textarea::placeholder,
+#outputBox::placeholder {
+  color: #7b8ea5;
+}
+
+/* Focus states — thick, high-contrast, with glow */
+textarea:focus, select:focus, button:focus-visible {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0, 224, 255, 0.18), var(--glow);
+}
+
+/* Output box style */
+#outputBox {
+  background: #0b1219;
+  color: #cfe9ff;
+  font-style: italic;
+  border: 1px solid var(--border-strong);
+}
+
+/* Buttons */
+.button-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+button {
+  padding: 12px 10px;
+  font-weight: 800;
+  font-size: 0.97rem;
+  letter-spacing: 0.6px;
+  color: #001015;
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-weak) 100%);
+  border: 1px solid rgba(0, 224, 255, 0.5);
+  border-radius: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 8px 18px rgba(0, 224, 255, 0.15), inset 0 0 0 1px rgba(255,255,255,0.1);
+  transition: transform 0.06s ease, filter 0.15s ease, background 0.2s ease;
+}
+
+button:hover {
+  filter: brightness(1.05);
+}
+
+button:active {
+  transform: translateY(1px) scale(0.995);
+}
+
+button:nth-child(2) {
+  /* secondary (copy) with lime accent */
+  color: #04110a;
+  background: linear-gradient(180deg, var(--accent) 0%, #56d84e 100%);
+  border-color: rgba(124, 255, 107, 0.5);
+  box-shadow: 0 8px 18px rgba(124, 255, 107, 0.15), inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+
+/* Accessibility: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .container { padding: 18px 16px; }
+  .button-group { grid-template-columns: 1fr; }
+}

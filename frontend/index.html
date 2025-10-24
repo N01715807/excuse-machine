@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Excuse Machine</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container" role="main">
+    <header>
+      <h1 id="page-title">Excuse Machine</h1>
+      <p id="page-desc">Generate a humorous excuse for any situation. </p>
+    </header>
+
+    <form aria-labelledby="page-title" aria-describedby="page-desc">
+      <fieldset>
+        <legend>Your situation</legend>
+        <label for="userInput">Describe what happened:</label>
+        <textarea id="userInput" name="userInput" rows="4"
+          placeholder="e.g. I missed my upload deadline again..."
+          aria-required="true"></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Choose a style</legend>
+        <label for="styleSelect">Excuse style:</label>
+        <select id="styleSelect" name="styleSelect">
+          <option value="sarcastic">Sarcastic</option>
+          <option value="absurd">Absurd</option>
+          <option value="creator">Content Creator</option>
+          <option value="british_dry">British Dry</option>
+          <option value="wholesome">Wholesome</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>Generated excuse</legend>
+        <label for="outputBox">Excuse output:</label>
+        <textarea id="outputBox" name="outputBox" rows="3" readonly
+          placeholder="Your excuse will appear here..."
+          aria-live="polite"></textarea>
+      </fieldset>
+
+      <div class="button-group">
+        <button type="submit">Generate Excuse</button>
+        <button type="button">Copy Output</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>
