@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  ollama-appECM:
+    image: ollama/ollama:latest
+    container_name: ollama-appECM
+    restart: unless-stopped
+    volumes:
+      - ./ollama-appA:/root/.ollama
+    networks:
+      - excuse_net
+    # ports:
+    #   - "11434:11434"
+
+networks:
+  excuse_net:
