@@ -14,19 +14,20 @@ endif
         venv install test-import
 
 help:
-	@echo "可用命令："
-	@echo "  make up           # 构建并启动 docker（backend + ollama）"
-	@echo "  make down         # 停止并清理容器"
-	@echo "  make restart      # 重启所有容器"
-	@echo "  make ps           # 查看容器状态"
-	@echo "  make logs         # 跟随查看所有服务日志"
-	@echo "  make pull-model   # 在 ollama 容器内拉取模型（默认 $(MODEL)）"
-	@echo "  make models       # 列出已下载模型"
-	@echo "  make venv         # 在 backend/ 创建 Python 虚拟环境"
-	@echo "  make install      # 在 venv 安装后端依赖"
-	@echo "  make test-import  # 在 venv 验证 fastapi/httpx/uvicorn 是否可用"
-	@echo ""
-	@echo "示例：make pull-model MODEL=gemma:2b-instruct"
+	@echo "Available commands:"
+    @echo "  make up           # Build and start Docker containers (backend + ollama)"
+    @echo "  make down         # Stop and remove all containers"
+    @echo "  make restart      # Restart all containers"
+    @echo "  make ps           # Show container status"
+    @echo "  make logs         # Follow all service logs"
+    @echo "  make pull-model   # Pull model inside ollama container (default: $(MODEL))"
+    @echo "  make models       # List all downloaded models"
+    @echo "  make venv         # Create Python virtual environment in backend/"
+    @echo "  make install      # Install backend dependencies into venv"
+    @echo "  make test-import  # Verify fastapi/httpx/uvicorn imports in venv"
+    @echo ""
+    @echo "Example: make pull-model MODEL=gemma:2b-instruct"
+
 
 # ===== Docker =====
 up:
