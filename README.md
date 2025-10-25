@@ -1,7 +1,7 @@
 # Excuse Machine
 
 A lightweight, local **humorous excuse generator**.  
-- Frontend: HTML5, CSS3, javascript
+- Frontend: HTML5, CSS3, Javascript
 - Backend: FastAPI, Python 3.11
 - Model: Ollama + phi3:mini (local LLM)
 - Container: Docker Compose
